@@ -39,7 +39,7 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className="my-14">
-            <CheckList/>
+            <CheckList data={userData}/>
             </div>
         </div>
         </UserContext.Provider>
