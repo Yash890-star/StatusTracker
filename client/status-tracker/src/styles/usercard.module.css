@@ -1,0 +1,58 @@
+.card{
+    background-color: rgb(48, 48, 48);
+}
+
+.progressCard{
+    background-color: rgb(48, 48, 48);
+}
+
+.selector{
+    background-color: rgb(48, 48, 48);
+    height: 100%;
+    width: 30%;
+}
+
+.pbc{
+    width: 125px;
+}
+
+.phead{
+    margin-bottom: 30px;
+}
+
+.line{
+    height: 1px;
+    width: 90%;
+    margin: 0px auto;
+    background-color: rgb(184, 180, 180);
+}
+.linehead{
+    height: 1px;
+    width: 100%;
+    margin: 0px auto;
+    background-color: rgb(184, 180, 180);
+}
+
+
+@media all and (max-width: 1335px) {
+    .selector{
+        padding: 40px 40px;
+    }
+}
+
+@media all and (max-width: 1493px) {
+    .progresscontainer{
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .progressCard{
+        padding-bottom: 40px;
+    }
+}
+
+@media all and (max-width: 719px){
+    .progressCard{
+        display: none;
+    }
+}

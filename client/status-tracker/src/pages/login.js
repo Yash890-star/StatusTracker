@@ -18,13 +18,13 @@ const Login = () => {
                 password: password
             })
         })
-        router.push('/')
+        router.push('/student/dashboard')
     }
 
     return (<>
         <form>
             <label htmlFor="email">Enter Email</label>
-            <input type="text" name="email" onChange={e => {setEmail(e.target.value)}}/><br />
+            <input type="text" className="flex align-center" name="email" onChange={e => {setEmail(e.target.value)}}/><br />
             <label htmlFor="password">Enter Password</label>
             <input type="password" name="password" onChange={e => setPassword(e.target.value)}/><br/>
             <button type="submit" onClick={formHandler}>Submit</button>

@@ -1,19 +1,41 @@
 const User = require('../models/user')
+const Syllabus = require('../models/syllabus')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+
+async function test (arr) {
+    let newarr = []
+    for (const iterator of arr) {
+        const trainingData = await Syllabus.findOne({syllabusType: iterator})
+        newarr.push(trainingData.syllabus)
+    }
+    let b = {}, k = 0;
+    for (let x of arr) {
+        let g = {}
+        for (let i of newarr[k]) {
+            g[i] = [0, null]
+        }
+        b[x] = g;
+        k++;
+    }
+    return b
+}
 
 exports.postRegister = async (req, res, next) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(req.body.password, salt)
+    const userTrainingData = await test(req.body.trainingType)
     const user = new User({
         name: req.body.name,
+        regNo: req.body.regNo,
         email: req.body.email,
         dept: req.body.dept,
         trainingType: req.body.trainingType,
-        regNo: req.body.regno,
         password: hashedPassword,
+        trainingData: userTrainingData
     })
     const result = await user.save()
+    console.log('saved')
     const { password, ...data } = await result.toJSON()
     res.send(data)
 }
@@ -38,25 +60,6 @@ exports.postLogin = async (req, res, next) => {
     res.send({
         message: "success"
     })
-}
-
-exports.getUser = async (req, res, next) => {
-    try {
-        const cookie = req.cookies['jwt']
-        const claims = jwt.verify(cookie, "mysecretkey")
-        if (!claims) {
-            return res.status(401).send({
-                message: "unauthenticated"
-            })
-        }
-        const user = await User.findOne({ _id: claims._id })
-        const { password, ...data } = user.toJSON()
-        res.send(data)
-    } catch (err) {
-        return res.status(401).send({
-            message: "unauthenticated"
-        })
-    }
 }
 
 exports.postLogout = (req, res, next) => {

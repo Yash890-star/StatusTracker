@@ -23,8 +23,11 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     trainingType:{
-        type: String,
+        type: Array,
         required: true
+    },
+    trainingData:{
+        type: Object,
     }
 })
 
