@@ -1,38 +1,38 @@
+.form {
 
-.form{
-
-    height:85vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.inputBox{
-    height:45px;
+.inputBox {
+    height: 45px;
     width: 300px;
     border-radius: 10px;
     padding-left: 15px;
     padding-right: 15px;
     color: white;
     background-color: #243847;
-    margin-top:-6px;
+    margin-top: -6px;
 }
+
 .inputBox:focus {
     outline: none
 }
 
-.submitButton{
+.submitButton {
 
     background-color: #3b47f7;
     height: 45px;
     width: 120px;
-    border-radius:5px;
-    transition:0.3s;
+    border-radius: 5px;
+    transition: 0.3s;
     margin-bottom: 15px;
 }
 
-.submitButton:hover{
+.submitButton:hover {
     /* background-color:transparent; */
     /* border: 1px solid #3b47f7; */
     /* color:#7b83fc; */
@@ -40,33 +40,34 @@
     transition: 0.3s;
 }
 
-.loginText{
+.loginText {
     margin-bottom: 20px;
-    font-size:50px ;
+    font-size: 50px;
     font-weight: light;
 }
 
-.rememberMe{
-  width: 145px;
-  display:flex;
-justify-content: space-around;
-align-items: center;
-margin-top: -10px;
-margin-bottom: 20px;
+.rememberMe {
+    width: 145px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
 }
-.rMe{
+
+.rMe {
     padding-bottom: 3px;
     font-weight: light;
 }
-.enterYourCredentials{
-    
-    font-weight:light;
+
+.enterYourCredentials {
+    font-weight: light;
     margin-bottom: 20px;
 
 }
-.checkBox{
-    height:15px;
-    width: 15px;
-   color: red;
-}
 
+.checkBox {
+    height: 15px;
+    width: 15px;
+    color: red;
+}
