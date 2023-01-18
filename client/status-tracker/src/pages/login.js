@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import s from "../styles/login.module.css";
 
 const Login = () => {
 
@@ -22,12 +23,20 @@ const Login = () => {
     }
 
     return (<>
-        <form>
-            <label htmlFor="email">Enter Email</label>
-            <input type="text" className="flex align-center" name="email" onChange={e => {setEmail(e.target.value)}}/><br />
-            <label htmlFor="password">Enter Password</label>
-            <input type="password" name="password" onChange={e => setPassword(e.target.value)}/><br/>
-            <button type="submit" onClick={formHandler}>Submit</button>
+        <form className={s.form}>
+            <p className={s.loginText}>Login</p>
+            <label className={s.enterYourCredentials}>Enter Your Credentials</label>
+            <input type="text" placeholder="College Email" className={s.inputBox} name="email" onChange={e => {setEmail(e.target.value)}}/><br />
+            {/* <label htmlFor="password">Enter Password</label> */}
+            <input type="password" placeholder="Enter Password" className={s.inputBox} name="password" onChange={e => setPassword(e.target.value)}/><br/>
+            <div className={s.rememberMe}>
+            <label className={s.rMe}>Remember Me</label>
+            <input type="checkbox" className={s.checkBox}></input>
+            </div>
+            <button type="submit" className={s.submitButton} onClick={formHandler}>Submit</button>
+            
+            <p>Don't have an Account? Create one</p>
+        
         </form>
     </>);
 }
