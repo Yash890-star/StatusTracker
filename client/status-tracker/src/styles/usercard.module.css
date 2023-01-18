@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300&display=swap');
+
 .card{
-    background-color: rgb(48, 48, 48);
+    background-color: #243847;
+}
+
+.font{
+    font-family: 'Sofia Sans', sans-serif;
 }
 
 .progressCard{
-    background-color: rgb(48, 48, 48);
+    background-color: #243847;
 }
 
 .selector{
-    background-color: rgb(48, 48, 48);
+    background-color: #243847;
     height: 100%;
     width: 30%;
 }
@@ -22,7 +28,7 @@
 
 .line{
     height: 1px;
-    width: 90%;
+    width: 100%;
     margin: 0px auto;
     background-color: rgb(184, 180, 180);
 }
@@ -31,6 +37,16 @@
     width: 100%;
     margin: 0px auto;
     background-color: rgb(184, 180, 180);
+}
+
+.bg{
+    background-color: #243847;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.checkbox{
+    width: 20px;
 }
 
 

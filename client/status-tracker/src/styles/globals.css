@@ -7,5 +7,16 @@ body{
     text-rendering: optimizeLegibility;
     margin: 0px;
     padding: 0px;
-    background-color: #000;
+    background-color: #0c2233;
+    color: white;
 }
+
+
+
+input[type="checkbox"]:disabled + label::before{
+    background: red;
+  }
+  input[type="checkbox"]:disabled + label:hover::before{
+    background: red;
+    border: 1px solid #d4d4d5;
+  }

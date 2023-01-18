@@ -31,7 +31,7 @@ exports.postUpdateSyllabus = async (req, res, next) => {
             })
         }
         const user = await User.findOne({ _id: claims._id })
-        user.trainingData = req.body.data
+        user.trainingData = req.body.data.trainingData
         await user.save()
         res.send("updated")
     } catch (err) {
