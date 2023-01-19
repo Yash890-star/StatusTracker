@@ -25,6 +25,7 @@ exports.postRegister = async (req, res, next) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(req.body.password, salt)
     const userTrainingData = await test(req.body.trainingType)
+    console.log(req.body)
     const user = new User({
         name: req.body.name,
         regNo: req.body.regNo,

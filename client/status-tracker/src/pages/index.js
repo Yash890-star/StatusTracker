@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 export default function Home() {
 
   const router = useRouter()
-
+  
   const fetchData = () => {
     fetch("http://localhost:8080/api/user",{
       credentials: 'include'

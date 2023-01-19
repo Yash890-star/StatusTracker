@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import s from "../styles/SignUp.module.css";
@@ -8,7 +9,7 @@ const SignUp = () => {
     const [regNo, setRegNo] = useState('')
     const [email, setEmail] = useState('')
     const [dept, setDept] = useState('cse')
-    const [trainingType, setTrainType] = useState('fullstack')
+    const [trainingType, setTrainType] = useState([])
     const [password, setPassword] = useState('')
     const router = useRouter()
     const [syllabusoptions, setSyllabusOptions] = useState({})
@@ -35,7 +36,7 @@ const SignUp = () => {
         for(let x in syllabusoptions){
             for(let y of syllabusoptions[x]){
                 b = <div className={s.checkBoxes}>
-                    <input type="checkbox" className="" onClick={(event) => {m.push(event.target.value)}} name={y} value={y}/>
+                    <input type="checkbox" className="" onClick={(event) => {setTrainType((oldData) => [...oldData, event.target.value])}} name={y} value={y}/>
                     <label className="ml-2" htmlFor={y}>{y}</label>
                 </div>
                 a.push(b)
@@ -46,6 +47,8 @@ const SignUp = () => {
     async function formHandler(event){
         event.preventDefault()
         console.log(m)
+        let type = m
+        console.log(type)
         await fetch("http://localhost:8080/api/register", {
             method: "POST",
             headers: {'content-type':'application/json'},
@@ -54,7 +57,7 @@ const SignUp = () => {
                 regNo: regNo,
                 email: email,
                 dept: dept,
-                trainingType: m,
+                trainingType: trainingType,
                 password: password
             })
         })
@@ -76,7 +79,7 @@ const SignUp = () => {
             {a}
             <input className={`${s.inputBox} mt-2`} id="passwordBox" placeholder="Password"type="password" name="password" onChange={e => {setPassword(e.target.value)}}/><br/>
             <button className={s.submitButton} type="submit" onClick={formHandler}>Submit</button>
-            <p>Aldready have an Account? <span className={s.login}>Login</span> </p>
+            <p>Aldready have an Account? <span className={s.login}><Link href="/login">Login</Link></span> </p>
         </form>
     </>);
 }

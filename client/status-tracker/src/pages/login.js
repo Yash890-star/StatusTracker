@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import s from "../styles/login.module.css";
@@ -35,7 +36,7 @@ const Login = () => {
             </div>
             <button type="submit" className={s.submitButton} onClick={formHandler}>Submit</button>
             
-            <p>Don't have an Account? <span  className={s.login}> Create one</span></p>
+            <p>Don't have an Account? <span  className={s.login}><Link href="/SignUp">Create one</Link></span></p>
         
         </form>
     </>);
