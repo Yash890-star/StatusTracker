@@ -8,6 +8,7 @@ const userRoutes = require('../controller/user')
 router.post('/register', authRoutes.postRegister)
 router.post('/login', authRoutes.postLogin)
 router.post('/logout',authRoutes.postLogout)
+router.get('/syllabusoptions', authRoutes.getSyllabusOptions)
 
 //Syllabus
 router.post('/syllabus', syllabusRoutes.postSyllabus)

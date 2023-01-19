@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import s from "../styles/SignUp.module.css";
 
 const SignUp = () => {
@@ -11,9 +11,41 @@ const SignUp = () => {
     const [trainingType, setTrainType] = useState('fullstack')
     const [password, setPassword] = useState('')
     const router = useRouter()
+    const [syllabusoptions, setSyllabusOptions] = useState({})
+
+
+    useEffect(() => {
+        fetch("http://localhost:8080/api/syllabusoptions", {
+            credentials: 'include'
+        })
+        .then(res => {
+            return res.json()
+        }).then(data => {
+            setSyllabusOptions(data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }, [])
+
+    let m = []
+
+    let a = []
+    let b 
+    if(syllabusoptions){
+        for(let x in syllabusoptions){
+            for(let y of syllabusoptions[x]){
+                b = <div className="w-1/4 mx-auto">
+                    <input type="checkbox" className="" onClick={(event) => {m.push(event.target.value)}} name={y} value={y}/>
+                    <label htmlFor={y}>{y}</label>
+                </div>
+                a.push(b)
+            }
+        }
+    }
 
     async function formHandler(event){
         event.preventDefault()
+        console.log(m)
         await fetch("http://localhost:8080/api/register", {
             method: "POST",
             headers: {'content-type':'application/json'},
@@ -22,7 +54,7 @@ const SignUp = () => {
                 regNo: regNo,
                 email: email,
                 dept: dept,
-                trainingType: trainingType,
+                trainingType: m,
                 password: password
             })
         })
@@ -33,25 +65,15 @@ const SignUp = () => {
         <form className={s.form}>
         <p className={s.loginText}>Sign Up</p>
         <label className={s.enterYourCredentials}>Enter Your Credentials</label>
-            {/* <label htmlFor="name">Enter Name</label> */}
             <input className={s.inputBox} type="text" placeholder="Name"name="name" onChange={e => {setName(e.target.value)}}/><br/>
-            {/* <label htmlFor="rno">Enter Register No.</label> */}
             <input className={s.inputBox} type="text" placeholder="Register No" name="rno" onChange={e => {setRegNo(e.target.value)}}/><br/>
-            {/* <label htmlFor="email">Enter Email</label> */}
             <input className={s.inputBox} type="email" placeholder="Email" name="email" onChange={e => {setEmail(e.target.value)}}/><br/>
-            {/* <label htmlFor="dept">Enter Department</label> */}
             <select className={s.selectTags} name="dept" id="dept" onChange={e => {setDept(e.target.value)}}>
                 <option   value="" disabled selected>Department</option>
                 <option value="cse">CSE</option>
                 <option value="IT">IT</option>
             </select><br/>
-            {/* <label htmlFor="tt">Training Type</label> */}
-            <select className={s.selectTags} name="tt" id="tt" onChange={e => {setTrainType(e.target.value)}}>
-            <option color="black" value="" disabled selected>Training Type</option>
-                <option value="fullstack">Fullstack</option>
-                <option value="competitveprogramming">Competitive Programming</option>
-            </select><br/>
-            {/* <label htmlFor="password">Enter Password</label> */}
+            {a}
             <input className={s.inputBox} placeholder="Password"type="password" name="password" onChange={e => {setPassword(e.target.value)}}/><br/>
             <button className={s.submitButton} type="submit" onClick={formHandler}>Submit</button>
             <p>Aldready have an Account? Login</p>

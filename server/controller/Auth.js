@@ -68,3 +68,15 @@ exports.postLogout = (req, res, next) => {
         body: "success"
     })
 }
+
+exports.getSyllabusOptions = async (req,res,next) => {
+    const data = await Syllabus.find()
+    let finalResponse = {}
+    let response = []
+    for (let x in data){
+        response.push(data[x].syllabusType)
+    }
+    finalResponse['data'] = response
+    res.send(finalResponse)
+    
+}
