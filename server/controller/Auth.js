@@ -35,10 +35,16 @@ exports.postRegister = async (req, res, next) => {
         password: hashedPassword,
         trainingData: userTrainingData
     })
-    const result = await user.save()
-    console.log('saved')
-    const { password, ...data } = await result.toJSON()
-    res.send(data)
+    try{
+        const result = await user.save()
+        console.log('saved')
+        const { password, ...data } = await result.toJSON()
+        res.send(data)
+    }
+    catch (err) {
+        res.send('bad credentials')
+        console.log("bad creds")
+    }
 }
 
 exports.postLogin = async (req, res, next) => {
