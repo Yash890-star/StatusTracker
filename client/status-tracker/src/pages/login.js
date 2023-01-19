@@ -35,7 +35,7 @@ const Login = () => {
             </div>
             <button type="submit" className={s.submitButton} onClick={formHandler}>Submit</button>
             
-            <p>Don't have an Account? Create one</p>
+            <p>Don't have an Account? <span  className={s.login}> Create one</span></p>
         
         </form>
     </>);

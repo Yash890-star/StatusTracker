@@ -34,9 +34,9 @@ const SignUp = () => {
     if(syllabusoptions){
         for(let x in syllabusoptions){
             for(let y of syllabusoptions[x]){
-                b = <div className="w-1/4 mx-auto">
+                b = <div className={s.checkBoxes}>
                     <input type="checkbox" className="" onClick={(event) => {m.push(event.target.value)}} name={y} value={y}/>
-                    <label htmlFor={y}>{y}</label>
+                    <label className="ml-2" htmlFor={y}>{y}</label>
                 </div>
                 a.push(b)
             }
@@ -68,15 +68,15 @@ const SignUp = () => {
             <input className={s.inputBox} type="text" placeholder="Name"name="name" onChange={e => {setName(e.target.value)}}/><br/>
             <input className={s.inputBox} type="text" placeholder="Register No" name="rno" onChange={e => {setRegNo(e.target.value)}}/><br/>
             <input className={s.inputBox} type="email" placeholder="Email" name="email" onChange={e => {setEmail(e.target.value)}}/><br/>
-            <select className={s.selectTags} name="dept" id="dept" onChange={e => {setDept(e.target.value)}}>
-                <option   value="" disabled selected>Department</option>
+            <select className={`${s.selectTags} ${s.department}`} name="dept" id="dept" onChange={e => {setDept(e.target.value)}}>
+                <option  hidden value="" disabled selected>Department</option>
                 <option value="cse">CSE</option>
                 <option value="IT">IT</option>
             </select><br/>
             {a}
-            <input className={s.inputBox} placeholder="Password"type="password" name="password" onChange={e => {setPassword(e.target.value)}}/><br/>
+            <input className={`${s.inputBox} mt-2`} id="passwordBox" placeholder="Password"type="password" name="password" onChange={e => {setPassword(e.target.value)}}/><br/>
             <button className={s.submitButton} type="submit" onClick={formHandler}>Submit</button>
-            <p>Aldready have an Account? Login</p>
+            <p>Aldready have an Account? <span className={s.login}>Login</span> </p>
         </form>
     </>);
 }

@@ -18,18 +18,3 @@ input[type=checkbox] {
   height: 15px;
   /* filter:  invert(0%) hue-rotate(18deg) brightness(0); */
 }
-
-input[type=checkbox]:checked+label::before {
-  content: "";
-  display: block;
-  position: absolute;
-  text-align: center;
-  height: 20px;
-  width: 20px;
-  left: 0;
-  top: 5px;
-  background-color: #FA9E57;
-  font-family: "Montserrat";
-  border-radius: 2px;
-  border: 1px solid rgb(150 150 150 / 30%);
-}

@@ -23,6 +23,7 @@ const Dashboard = () => {
             if (res.message === 'unauthenticated') {
                 router.push('/login')
             }
+            console.log(res)
             setUserData(res)
         })
     }, [])
